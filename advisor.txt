@@ -1,0 +1,59 @@
+https://lotv.spawningtool.com/build/98237/
+14	  0:17	  Supply Depot
+15	  0:41	  Barracks
+16	  0:45	  Refinery
+19	  1:28	  Orbital Command
+19	  1:29	  Reaper
+20	  1:41	  2nd Command Center
+20	  1:51	  Barracks
+21	  2:01	  Barracks Reactor
+21	  2:05	  Supply Depot
+22	  2:17	  Barracks
+24	  2:38	  2 Marines
+24	  2:41	  Barracks Tech Lab
+26	  2:44	  Engineering Bay
+27	  2:56	  2 Marines, Orbital Command
+29	  3:05	  Barracks Tech Lab
+28	  3:14	  2 Marines
+28	  3:18	  Stimpack
+31	  3:24	  2 Marines
+34	  3:34	  2 Marines
+34	  3:39	  Terran Infantry Weapons 1
+36	  3:54	  Supply Depot
+40	  3:56	  Combat Shield
+41	  4:09	  2 Refineries
+48	  4:18	  Supply Depot
+48	  4:25	  Supply Depot
+52	  4:34	  Factory
+56	  4:45	  2 Marauders
+62	  5:07	  Marauder
+62	  5:16	  Marauder
+65	  5:25	  Missile Turret
+56	  5:47	  3rd Command Center
+56	  5:53	  Marauder
+52	  5:58	  Refinery
+50	  6:06	  Bunker
+50	  6:10	  Concussive Shells
+50	  6:12	  Starport
+50	  6:16	  Factory Reactor
+50	  6:21	  Marauder
+57	  6:35	  Marauder
+60	  6:44	  2 Barracks
+65	  7:02	  Terran Infantry Armor 1
+65	  7:04	  Armory
+66	  7:12	  Orbital Command
+66	  7:15	  2 Medivacs
+66	  7:17	  2 Marauders
+78	  7:27	  Missile Turret
+78	  7:32	  Barracks Tech Lab
+78	  7:33	  Barracks Reactor
+79	  7:38	  Marauder
+79	  7:41	  Orbital Command
+84	  7:47	  2 Medivacs
+93	  8:04	  Missile Turret
+101	  8:21	  Factory Tech Lab
+109	  8:39	  2 Liberators
+109	  8:46	  2 Refineries
+109	  8:52	  Fusion Core
+109	  8:53	  Starport
+124	  9:39	  Advanced Ballistics, Factory Reactor

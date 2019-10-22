@@ -1,0 +1,14 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "name": "advisor.exe",
+      "project": "CMakeLists.txt",
+      "projectTarget": "advisor.exe",
+      "currentDir": "${workspaceRoot}",
+      "args": []
+    }
+  ]
+}
