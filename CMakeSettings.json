@@ -7,8 +7,12 @@
       "inheritEnvironments": [ "msvc_x64_x64" ],
       "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe",
       "buildRoot": "${projectDir}\\build\\debug",
-      "installRoot": "${projectDir}",
-      "variables": []
+      "variables": [
+        {
+          "name": "CMAKE_INSTALL_PREFIX",
+          "value": "${projectDir}"
+        }
+      ]
     },
     {
       "name": "Release",
@@ -17,8 +21,12 @@
       "inheritEnvironments": [ "msvc_x64_x64" ],
       "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe",
       "buildRoot": "${projectDir}\\build\\release",
-      "installRoot": "${projectDir}",
-      "variables": []
+      "variables": [
+        {
+          "name": "CMAKE_INSTALL_PREFIX",
+          "value": "${projectDir}"
+        }
+      ]
     }
   ]
 }
