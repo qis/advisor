@@ -1,12 +1,9 @@
 @echo off
 if "%__VS_VCVARS64%"=="1" goto :call
-if "%~1"=="" goto :vars
-for %%i in (%*) do (echo :reset: :clean: | findstr /i ":%%i:" 1>nul 2>nul) || goto :vars
-goto :call
 
-:vars
 set __VS_LOCATION=%ProgramFiles(x86)%\Microsoft Visual Studio\2019
 set __VS_EDITIONS=Enterprise,Professional,Community
+
 for %%i in (%__VS_EDITIONS%) do (
   if exist "%__VS_LOCATION%\%%i\VC\Auxiliary\Build\vcvarsall.bat" (
     call "%__VS_LOCATION%\%%i\VC\Auxiliary\Build\vcvarsall.bat" x64
@@ -20,6 +17,8 @@ set __VS_LOCATION=
 set __VS_EDITIONS=
 
 :call
-"%~dp0res\make\make.exe" %*
+pushd %~dp0
+nmake /nologo system=windows %*
+popd
 
 :exit

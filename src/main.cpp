@@ -1,14 +1,14 @@
+#include <version.h>
+
 class Player {
 public:
-  Player()
-  {
+  Player() {
     player_.MediaEnded([this](auto, auto) { SetEvent(event_.get()); });
     player_.MediaFailed([this](auto, auto) { SetEvent(event_.get()); });
     player_.AutoPlay(true);
   }
 
-  IAsyncAction Play(const Windows::Storage::Streams::IRandomAccessStream& stream)
-  {
+  IAsyncAction Play(const Windows::Storage::Streams::IRandomAccessStream& stream) {
     try {
       player_.SetStreamSource(stream);
       co_await resume_on_signal(event_.get());
@@ -24,8 +24,7 @@ private:
 
 class Synthesizer {
 public:
-  Synthesizer()
-  {
+  Synthesizer() {
     auto options = speech_synthesizer_.Options();
     options.AudioPitch(0.8);
     options.SpeakingRate(1.2);
@@ -34,8 +33,7 @@ public:
   }
 
   template <typename String>
-  auto Synthesize(String&& string)
-  {
+  auto Synthesize(String&& string) {
     return speech_synthesizer_.SynthesizeTextToStreamAsync(std::forward<String>(string));
   }
 
@@ -53,14 +51,12 @@ public:
     std::string command;
     SpeechSynthesisStream stream;
 
-    constexpr bool operator<(const Step& other) const noexcept
-    {
+    constexpr bool operator<(const Step& other) const noexcept {
       return time < other.time;
     }
   };
 
-  Window(int argc, char* argv[]) noexcept : hinstance_(GetModuleHandle(nullptr))
-  {
+  Window(int argc, char* argv[]) noexcept : hinstance_(GetModuleHandle(nullptr)) {
     if (argc > 1 && std::string_view(argv[1]) == "test") {
       test_ = true;
     }
@@ -85,15 +81,13 @@ public:
   Window& operator=(Window&& other) = delete;
   Window& operator=(const Window& other) = delete;
 
-  ~Window()
-  {
+  ~Window() {
     UnregisterClass(class_name, hinstance_);
   }
 
   std::regex re{ R"(^\s*(\d+):(\d+)\s+([^\s#]+(?:\s+[^\s#]+)*))", std::regex::ECMAScript | std::regex::optimize };
 
-  IAsyncAction Advise()
-  {
+  IAsyncAction Advise() {
     const auto start = std::chrono::steady_clock::now();
 
     std::vector<Step> steps;
@@ -187,8 +181,7 @@ public:
     player.Play(done);
   }
 
-  void OnCreate() noexcept
-  {
+  void OnCreate() noexcept {
     static HWND hwnd = nullptr;
     hwnd = hwnd_;
     SetConsoleCtrlHandler(
@@ -203,8 +196,7 @@ public:
     }
   }
 
-  void OnDestroy() noexcept
-  {
+  void OnDestroy() noexcept {
     if (advise_) {
       advise_.Cancel();
     }
@@ -212,8 +204,7 @@ public:
     PostQuitMessage(0);
   }
 
-  void OnHotkey() noexcept
-  {
+  void OnHotkey() noexcept {
     try {
       if (advise_ && advise_.Status() == AsyncStatus::Started) {
         advise_.Cancel();
@@ -233,8 +224,7 @@ public:
     }
   }
 
-  int Run() noexcept
-  {
+  int Run() noexcept {
     MSG msg = {};
     while (GetMessage(&msg, nullptr, 0, 0)) {
       DispatchMessage(&msg);
@@ -243,8 +233,7 @@ public:
   }
 
 private:
-  static LRESULT __stdcall Proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) noexcept
-  {
+  static LRESULT __stdcall Proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) noexcept {
     switch (msg) {
     case WM_CREATE:
       if (const auto window = reinterpret_cast<Window*>(reinterpret_cast<LPCREATESTRUCT>(lparam)->lpCreateParams)) {
@@ -275,8 +264,7 @@ private:
   bool test_ = false;
 };
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
   init_apartment();
   Window window(argc, argv);
   return window.Run();

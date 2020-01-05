@@ -1,34 +1,27 @@
-# usage: make run|install|format|clean
-#
-#  run        - build and execute program
-#  install    - build and install program
-#  format     - use clang-format on all sources
-#  clean      - remove curent build directory
-#
-MAKEFLAGS += --no-print-directory
+target = advisor
 
-TARGET	:= $(shell cmake -P res/scripts/target.cmake 2>&1)
-SOURCE	:= $(shell cmake -P res/scripts/source.cmake 2>&1)
+all: build/debug/rules.ninja
+	@cmake --build build/debug
 
-all: build/release/CMakeCache.txt
-	@cmake --build build/release --target $(TARGET)
+run: build/debug/rules.ninja
+	@cmake --build build/debug --target $(target)
+	@build\debug\$(target).exe
 
-run: build/release/CMakeCache.txt
-	@cmake --build build/release --target $(TARGET)
-	@build/release/$(TARGET)
-
-install: build/release/CMakeCache.txt
+install: build/release/rules.ninja
 	@cmake --build build/release --target install
 
 format:
-	@C:/LLVM/bin/clang-format.exe -i $(SOURCE)
+	@cmake -P res/format.cmake
 
 clean:
-	@cmake -E remove_directory .vs build
+	@cmake -E remove_directory build
 
-build/release/CMakeCache.txt: CMakeLists.txt
+build/debug/rules.ninja: CMakeLists.txt
+	@cmake -GNinja -DCMAKE_BUILD_TYPE=Debug \
+	  -DCMAKE_INSTALL_PREFIX="$(MAKEDIR)" \
+	  -B build/debug
+
+build/release/rules.ninja: CMakeLists.txt
 	@cmake -GNinja -DCMAKE_BUILD_TYPE=Release \
-	  -DCMAKE_INSTALL_PREFIX="$(CURDIR)" \
+	  -DCMAKE_INSTALL_PREFIX="$(MAKEDIR)" \
 	  -B build/release
-
-.PHONY: all run install format clean

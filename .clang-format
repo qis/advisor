@@ -10,7 +10,7 @@ AlignTrailingComments: true
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: false
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: None
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
@@ -23,7 +23,7 @@ BraceWrapping:
   AfterClass: false
   AfterControlStatement: false
   AfterEnum: false
-  AfterFunction: true
+  AfterFunction: false
   AfterNamespace: false
   AfterStruct: false
   AfterUnion: false
@@ -40,7 +40,7 @@ BreakBeforeInheritanceComma: false
 BreakInheritanceList: AfterColon
 BreakBeforeTernaryOperators: false
 BreakConstructorInitializersBeforeComma: false
-BreakConstructorInitializers: AfterColon
+BreakConstructorInitializers: BeforeColon
 BreakStringLiterals: false
 ColumnLimit: 120
 CommentPragmas: '^ (NOTE|TODO):'
